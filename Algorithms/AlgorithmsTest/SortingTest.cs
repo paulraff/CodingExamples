@@ -52,12 +52,23 @@ namespace AlgorithmsTest
         }
 
         [TestMethod]
-        public void merge_sort_ten_element_list()
+        public void merge_sort_three_element_list()
         {
-            int[] input = { 2, 1, 5, 6, 7, 9, 2, 5, 7, 1 };
+            int[] input = { 5, 6, 7 };
 
             int[] actual = Sorting.MergeSort(input);
-            int[] expected = { 1, 1, 2, 2, 5, 5, 6, 7, 7, 9 };
+            int[] expected = { 5, 6, 7 };
+
+            actual.ShouldBeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public void merge_sort_ten_element_list()
+        {
+            int[] input = { 9, 8, 7, 6, 5, 5, 4, 3, 2, 1 };
+
+            int[] actual = Sorting.MergeSort(input);
+            int[] expected = { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9 };
 
             actual.ShouldBeEquivalentTo(expected);
         }

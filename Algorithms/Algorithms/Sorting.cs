@@ -4,6 +4,7 @@ namespace Raff.Algorithms
 {
     public class Sorting
     {
+        
         // Merge sort - specific to integers
         public static int[] MergeSort(int[] inputList)
         {
@@ -70,7 +71,7 @@ namespace Raff.Algorithms
             {
                 while (rightCounter < rightArray.Length)
                 {
-                    result[resultCounter] = rightArray[rightCounter];
+                    result[resultCounter++] = rightArray[rightCounter];
                     rightCounter++;
                 }
             }
@@ -78,7 +79,7 @@ namespace Raff.Algorithms
             {
                 while (leftCounter < leftArray.Length)
                 {
-                    result[resultCounter] = leftArray[leftCounter];
+                    result[resultCounter++] = leftArray[leftCounter];
                     leftCounter++;
                 }
             }
