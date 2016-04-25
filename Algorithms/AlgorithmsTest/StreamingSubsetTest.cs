@@ -42,7 +42,7 @@ namespace AlgorithmsTest
         }
 
         [TestMethod]
-        public void random_subset_6_tries()
+        public void random_subset_7_tries()
         {
             // Using seed 123 gives the following for the first 6 calls:
             // 0.984556915231308
@@ -50,7 +50,9 @@ namespace AlgorithmsTest
             // 0.743545518137303
             // 0.811641653446314
             // 0.738779145171297
-            // 0.0483150165753043
+            // 0.0483150165753043\
+            
+            // Note the randomizer is only invoked when the subset is filled up
 
             var randomSubset = new Algorithms.StreamingSubset<int>(1, 123);
             randomSubset.Give(1);   // Keep
@@ -65,8 +67,30 @@ namespace AlgorithmsTest
             expected[0] = 1;
             actual.ShouldBeEquivalentTo(expected);
 
+            randomSubset.Give(3);
+            actual = randomSubset.GetSubset();
+            expected[0] = 1;
+            actual.ShouldBeEquivalentTo(expected);
 
+            randomSubset.Give(4);
+            actual = randomSubset.GetSubset();
+            expected[0] = 1;
+            actual.ShouldBeEquivalentTo(expected);
 
+            randomSubset.Give(5);
+            actual = randomSubset.GetSubset();
+            expected[0] = 1;
+            actual.ShouldBeEquivalentTo(expected);
+
+            randomSubset.Give(6);
+            actual = randomSubset.GetSubset();
+            expected[0] = 1;
+            actual.ShouldBeEquivalentTo(expected);
+
+            randomSubset.Give(7);
+            actual = randomSubset.GetSubset();
+            expected[0] = 7;
+            actual.ShouldBeEquivalentTo(expected);
         }
     }
 }

@@ -1,32 +1,59 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Raff.Algorithms
 {
-    public class Sorting
+    public class MergeSorter<T> : Sorter<T> where T : IComparable<T>
     {
+
+        private T[] _providedList;
+
+        public MergeSorter(T[] providedList)
+        {
+            _providedList = providedList;
+        }
+
+        public T[] Sort()
+        {
+            return Sort(_providedList);
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="inputList"></param>
         /// <returns></returns>
-        public static T[] MergeSort<T>(T[] inputList) where T : System.IComparable<T>
+        private T[] Sort(T[] list)
         {
-            var inputListLength = inputList.Length;
-            // Edge cases: 0 and 1 
-            if (inputListLength < 2)
-                return inputList;
+            // Edge cases 
+            if (ListSmallEnoughToReturn(list))
+                return list;
 
-            // Since length will be at least 2, then this will be at least 1
-            var midpoint = inputListLength / 2;
+            var leftArray = GetLeftHalfOf(list);
+            var rightArray = GetRightHalfOf(list);
 
-            var leftArray = inputList.Take(midpoint).ToArray();
-            var rightArray = inputList.Skip(midpoint).ToArray();
-
-            var leftArraySorted = MergeSort(leftArray);
-            var rightArraySorted = MergeSort(rightArray);
+            var leftArraySorted = Sort(leftArray);
+            var rightArraySorted = Sort(rightArray);
 
             return MergeSortMerge(leftArraySorted, rightArraySorted);
+        }
+
+        private bool ListSmallEnoughToReturn(T[] list)
+        {
+            return list.Length < 2;
+        }
+
+        private T[] GetLeftHalfOf(T[] list)
+        {
+            var midpoint = list.Length / 2;
+            return list.Take(midpoint).ToArray();
+        }
+
+        private T[] GetRightHalfOf(T[] list)
+        {
+            var midpoint = list.Length / 2;
+            return list.Skip(midpoint).ToArray();
         }
 
         // Merge sort - the merge part

@@ -36,11 +36,12 @@ namespace Algorithms
 
         public void Give(T item)
         {
+            _seen++;
+
             // Easy part - if our subset isn't big enough yet. 
             if (_subset.Count < _size)
             {
                 _subset.Add(item);
-                _seen++;
                 return;
             }
 
