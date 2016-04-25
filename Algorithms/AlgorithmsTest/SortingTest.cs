@@ -12,7 +12,8 @@ namespace AlgorithmsTest
         {
             int[] input = { };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -23,7 +24,8 @@ namespace AlgorithmsTest
         {
             string[] input = { };
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -34,7 +36,8 @@ namespace AlgorithmsTest
         {
             int[] input = { 4 };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { 4 };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -45,7 +48,8 @@ namespace AlgorithmsTest
         {
             string[] input = { "fa" };
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { "fa" };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -56,7 +60,8 @@ namespace AlgorithmsTest
         {
             int[] input = { 4, 8 };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { 4, 8 };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -67,7 +72,8 @@ namespace AlgorithmsTest
         {
             string[] input = { "fa", "la" };
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { "fa", "la" };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -78,7 +84,8 @@ namespace AlgorithmsTest
         {
             int[] input = { 8, 4 };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { 4, 8 };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -89,7 +96,8 @@ namespace AlgorithmsTest
         {
             string[] input = { "la", "fa" };
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { "fa", "la" };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -100,7 +108,8 @@ namespace AlgorithmsTest
         {
             int[] input = { 5, 6, 7 };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { 5, 6, 7 };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -111,7 +120,8 @@ namespace AlgorithmsTest
         {
             string[] input = { "ba", "fa", "la"};
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { "ba", "fa", "la" };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -122,7 +132,8 @@ namespace AlgorithmsTest
         {
             int[] input = { 9, 8, 7, 6, 5, 5, 4, 3, 2, 1 };
 
-            int[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<int>(input);
+            int[] actual = sorter.Sort();
             int[] expected = { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9 };
 
             actual.ShouldBeEquivalentTo(expected);
@@ -133,7 +144,8 @@ namespace AlgorithmsTest
         {
             string[] input = { "do", "re", "mi", "fa", "so", "la", "ti", "do", "boo", "yah" };
 
-            string[] actual = Sorting.MergeSort(input);
+            var sorter = new MergeSorter<string>(input);
+            string[] actual = sorter.Sort();
             string[] expected = { "do", "do", "fa", "la", "mi", "re", "so", "ti", "boo", "yah"};
 
             actual.ShouldBeEquivalentTo(expected);
