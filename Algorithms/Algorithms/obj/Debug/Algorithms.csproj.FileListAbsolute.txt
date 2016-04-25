@@ -1,0 +1,5 @@
+C:\Users\raff\OneDrive\Workspace\CodingExamples\Algorithms\Algorithms\bin\Debug\Algorithms.dll
+C:\Users\raff\OneDrive\Workspace\CodingExamples\Algorithms\Algorithms\bin\Debug\Algorithms.pdb
+C:\Users\raff\OneDrive\Workspace\CodingExamples\Algorithms\Algorithms\obj\Debug\Algorithms.csprojResolveAssemblyReference.cache
+C:\Users\raff\OneDrive\Workspace\CodingExamples\Algorithms\Algorithms\obj\Debug\Algorithms.dll
+C:\Users\raff\OneDrive\Workspace\CodingExamples\Algorithms\Algorithms\obj\Debug\Algorithms.pdb
