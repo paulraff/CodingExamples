@@ -59,24 +59,34 @@ namespace Raff.Algorithms
         // Merge sort - the merge part
         // We assume here that the input arrays are sorted.
         // Undefined behavior if they are not!
-        private static T[] MergeSortMerge(T[] leftArray, T[] rightArray)
+        private T[] MergeSortMerge(T[] leftHalf, T[] rightHalf)
         {
             // Edge case - either input is empty
-            if (leftArray.Length == 0)
-                return rightArray;
-            if (rightArray.Length == 0)
-                return leftArray;
+            if (leftHalf.Length == 0)
+                return rightHalf;
+            if (rightHalf.Length == 0)
+                return leftHalf;
 
-            var result = new T[leftArray.Length + rightArray.Length];
+            var initialMerge = MergeUntilOneEmpty(leftHalf, rightHalf);
+
+            // Out of the while loop, we've hit the endpoint of one of our arrays
+            FinishMergeAfterOneEmpty(initialMerge);
+
+            return initialMerge.merged;
+        }
+
+        private MergedArrayAndCounters MergeUntilOneEmpty(T[] leftHalf, T[] rightHalf)
+        {
+            var result = new T[leftHalf.Length + rightHalf.Length];
 
             var leftCounter = 0;
             var rightCounter = 0;
             var resultCounter = 0;
 
-            while (leftCounter < leftArray.Length && rightCounter < rightArray.Length)
+            while (leftCounter < leftHalf.Length && rightCounter < rightHalf.Length)
             {
-                var leftValue = leftArray[leftCounter];
-                var rightValue = rightArray[rightCounter];
+                var leftValue = leftHalf[leftCounter];
+                var rightValue = rightHalf[rightCounter];
 
                 if (leftValue.CompareTo(rightValue) < 0)
                 {
@@ -97,25 +107,47 @@ namespace Raff.Algorithms
                 }
             }
 
-            // Out of the while loop, we've hit the endpoint of one of our arrays
-            if (leftCounter == leftArray.Length)
+            return new MergedArrayAndCounters()
             {
-                while (rightCounter < rightArray.Length)
+                left = leftHalf,
+                right = rightHalf,
+                merged = result,
+                leftCounter = leftCounter,
+                rightCounter = rightCounter,
+                mergedCounter = resultCounter
+            };
+
+        }
+
+        private void FinishMergeAfterOneEmpty(MergedArrayAndCounters mergedAndOneEmpty)
+        {
+            if (mergedAndOneEmpty.leftCounter == mergedAndOneEmpty.left.Length)
+            {
+                while (mergedAndOneEmpty.rightCounter < mergedAndOneEmpty.right.Length)
                 {
-                    result[resultCounter++] = rightArray[rightCounter];
-                    rightCounter++;
+                    mergedAndOneEmpty.merged[mergedAndOneEmpty.mergedCounter++] = mergedAndOneEmpty.right[mergedAndOneEmpty.rightCounter];
+                    mergedAndOneEmpty.rightCounter++;
                 }
             }
             else
             {
-                while (leftCounter < leftArray.Length)
+                while (mergedAndOneEmpty.leftCounter < mergedAndOneEmpty.left.Length)
                 {
-                    result[resultCounter++] = leftArray[leftCounter];
-                    leftCounter++;
+                    mergedAndOneEmpty.merged[mergedAndOneEmpty.mergedCounter++] = mergedAndOneEmpty.left[mergedAndOneEmpty.leftCounter];
+                    mergedAndOneEmpty.leftCounter++;
                 }
             }
-
-            return result;
         }
+
+        internal class MergedArrayAndCounters
+        {
+            public T[] left { get; set; }
+            public T[] right { get; set; }
+            public T[] merged { get; set; }
+            public int leftCounter { get; set; }
+            public int rightCounter { get; set; }
+            public int mergedCounter { get; set; }
+        }
+
     }
 }

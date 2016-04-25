@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AlgorithmsTest
 {
     [TestClass]
-    public class SortingTest
+    public class MergeSorterTest
     {
         [TestMethod]
         public void merge_sort_empty_input_empty_output()
