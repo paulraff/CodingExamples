@@ -4,7 +4,12 @@ namespace Raff.Algorithms
 {
     public class Sorting
     {
-        // Merge sort - generic
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="inputList"></param>
+        /// <returns></returns>
         public static T[] MergeSort<T>(T[] inputList) where T : System.IComparable<T>
         {
             var inputListLength = inputList.Length;
