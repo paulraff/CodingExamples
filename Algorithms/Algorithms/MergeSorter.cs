@@ -67,12 +67,12 @@ namespace Raff.Algorithms
             if (rightHalf.Length == 0)
                 return leftHalf;
 
-            var initialMerge = MergeUntilOneEmpty(leftHalf, rightHalf);
+            var mergedOutput = MergeUntilOneEmpty(leftHalf, rightHalf);
 
             // Out of the while loop, we've hit the endpoint of one of our arrays
-            FinishMergeAfterOneEmpty(initialMerge);
+            FinishMergeAfterOneEmpty(mergedOutput);
 
-            return initialMerge.merged;
+            return mergedOutput.merged;
         }
 
         private MergedArrayAndCounters MergeUntilOneEmpty(T[] leftHalf, T[] rightHalf)
